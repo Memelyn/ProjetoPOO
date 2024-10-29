@@ -26,6 +26,8 @@ Este projeto está sob a licença MIT.
 
 ## Autores
 Felipe dos Anjos - [Perfil do GitHub](https://github.com/FelipeO13)
+
 Mário Teixeira   - [Perfil do GitHub](https://github.com/MarioNetun)
+
 Melissa Evelyn   - [Perfil do GitHub](https://github.com/Memelyn)
 
