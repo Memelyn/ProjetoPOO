@@ -1,0 +1,84 @@
+    body {
+    background-color: #f9fafb; /* Fundo claro */
+    color: #2d3748; /* Texto escuro */
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: #1a202c; /* Título mais destacado */
+}
+
+form {
+    background-color: #ffffff; /* Fundo do formulário */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+}
+
+label {
+    color: #4a5568; /* Texto dos labels */
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    border: 1px solid #e2e8f0; /* Bordas claras */
+    border-radius: 5px;
+    background-color: #edf2f7; /* Fundo suave */
+    color: #2d3748; /* Texto escuro */
+}
+
+input[type="submit"] {
+    background-color: #4299e1; /* Azul vibrante */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #3182ce; /* Azul mais escuro ao passar o mouse */
+}
+
+.button-back {
+    background-color: #4299e1; /* Azul consistente */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    position: relative;
+    top: 20px;
+    display: inline-block;
+}
+
+.button-back:hover {
+    background-color: #3182ce;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.forgot-password a {
+    color: #4299e1; /* Link com azul vibrante */
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

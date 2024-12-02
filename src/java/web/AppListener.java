@@ -30,16 +30,9 @@ public class AppListener implements ServletContextListener {
         try {
             Connection c = AppListener.getConnection();
             Statement s = c.createStatement();
-            initializeLog += new Date() + ": Initalizing database connection";
-            initializeLog += "Creating Users table if not exists...";
+            
             s.execute(User.getCreateStatement());
-            if(User.getUsers().isEmpty()){
-                initializeLog += "Adding default users...";
-                User.insertUser("admin", "Administrador", "1234");
-                initializeLog += "Admin added; ";
-                User.insertUser("fulano", "Fulano da Silva", "1234");
-                initializeLog += "Fulano added";
-            }
+         
             
             initializeLog += "done; ";
             initializeLog += " Creating vehicleStay table if not exists...";

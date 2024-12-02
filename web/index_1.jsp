@@ -2,10 +2,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <title>Verificador de Avarias</title>
     
     </head>
     <body>
+         <%@include file="WEB-INF/jspf/header.jspf" %>
+         <div id="header_app">
+         <div v-if="!user">
    <header class="text-center mt-4">
             <h1>Verificador de Avarias</h1>
         </header>
@@ -23,7 +27,7 @@
                 </div>
             </div>       
         </form>
-
+         </div>
         <!-- Resultado da an√°lise -->
         <div style="margin: 30px auto; width: 80%; max-width: 600px; text-align: center; padding: 20px;">
             <% if (request.getAttribute("analysisResult") != null) { %>
@@ -41,5 +45,39 @@
                 const imagePath = inputField.value;
                 return true; // Permite o envio do formul√°rio
             }
+            </script>
+        
+</div>
+        <script>
+            // Valida√ß√£o do formul√°rio
+            function validateForm() {
+                const inputField = document.getElementById("img_end");
+                const imagePath = inputField.value;
+                return true; // Permite o envio do formul√°rio
+            }
+            
+             document.addEventListener('DOMContentLoaded', function () {
+        const session = Vue.createApp({
+            data() {
+                return {
+                    user: null, // Receba o usu·rio da sess„o via API ou inicialize como `null`
+                };
+            },
+            
+             async mounted() {
+                try {
+                    const response = await fetch('/AutoVar/api/session'); // Checa se h· uma sess„o ativa
+                    if (response.ok) {
+                        this.user = await response.json();
+                    }
+                } catch (err) {
+                    console.error('Erro ao buscar sess„o:', err);
+                }
+            }
+        });
+        session.mount('#header_app');
+        }
+    
+            
         </script>
     </body>

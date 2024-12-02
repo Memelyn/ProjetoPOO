@@ -55,7 +55,7 @@ public class ApiServlet extends HttpServlet {
              User u = (User) request.getSession(false).getAttribute("user");
             // u = User.getUserByLoginAndPassword(login, password);
             if(u == null){
-                response.sendError(403, "No session");
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 file.put("error", "No session");
             }else{
               //  User u = (User) request.getSession().getAttribute("user");
