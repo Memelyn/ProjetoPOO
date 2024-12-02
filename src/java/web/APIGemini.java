@@ -102,7 +102,7 @@ public class APIGemini extends HttpServlet {
             if (imagePath == null || imagePath.isEmpty()) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 req.setAttribute("error", "O caminho da imagem é obrigatório.");
-                req.getRequestDispatcher("analyze_gemini.jsp").forward(req, resp);
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
                 return;
             }
 
@@ -114,11 +114,11 @@ public class APIGemini extends HttpServlet {
 
             // Define o resultado da análise para a JSP
             req.setAttribute("analysisResult", analysisResult);
-            req.getRequestDispatcher("analyze_gemini.jsp").forward(req, resp);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
 
         } catch (Exception e) {
             req.setAttribute("error", "Erro ao processar a imagem: " + e.getMessage());
-            req.getRequestDispatcher("analyze_gemini.jsp").forward(req, resp);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
     }
 }
