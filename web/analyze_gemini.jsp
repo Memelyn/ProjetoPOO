@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Verificador de Avarias</title>
+    
     </head>
     <body>
    <header class="text-center mt-4">
@@ -10,7 +11,7 @@
         </header>
 
         <!-- Formulário para análise de imagem -->
-        <form method="POST" action="analyzeECG">
+        <form method="POST" action="APIGemini">
             <div style="margin: 50px auto 0; width: 80%; max-width: 600px; text-align: center; background: lightblue; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
                 <label for="img_end" class="form-label">Endereço da Imagem do Automóvel</label>
                 <input type="text" class="form-control mb-3" id="img_end" name="imagePath" required>
