@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+<link rel="stylesheet" href="styleUser.css">
     <%@include file="WEB-INF/jspf/header.jspf" %>
     <div id="app" class="container mt-5">
         <h1>Gerenciar Conta</h1>
