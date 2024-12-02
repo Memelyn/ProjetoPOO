@@ -1,4 +1,4 @@
-package ai;
+package web;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,7 +23,7 @@ import java.net.http.HttpResponse;
 @WebServlet("/APIGemini")
 public class APIGemini extends HttpServlet {
 
-    private static final String API_KEY = "TODO"; // Substitua pela chave correta
+    private static final String API_KEY = "AIzaSyDnIj9oYTHbgy5XZATGls86SfwoqVlVedc"; // Substitua pela chave correta
     private static final String API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + API_KEY;
 
     // Função para redimensionar a imagem
