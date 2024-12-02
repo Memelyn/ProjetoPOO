@@ -1,4 +1,4 @@
-package ai;
+package web;
 
 import java.net.http.HttpClient;
 import java.security.cert.X509Certificate;
