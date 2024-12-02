@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Verificador de Avarias</title>
-    
+     <link rel="stylesheet" href="styleAnalyze.css">
     </head>
     <body>
    <header class="text-center mt-4">
