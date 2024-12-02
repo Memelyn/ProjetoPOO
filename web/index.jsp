@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleAvarias.css">
+    <link rel="stylesheet" href="styleIndex.css">
     <title>Verificador de Avarias</title>
 </head>
 <body>
