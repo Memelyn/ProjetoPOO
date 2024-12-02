@@ -1,0 +1,93 @@
+body {
+    background-color: #f9fafb; /* Fundo claro */
+    color: #2d3748; /* Texto principal */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #1a202c; /* Cor destacada para o título */
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    border: 1px solid #e2e8f0; /* Borda suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #4a5568; /* Cor para o texto do label */
+    margin-bottom: 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    background-color: #edf2f7; /* Fundo claro */
+    color: #2d3748; /* Texto escuro */
+    font-size: 14px;
+}
+
+button {
+    background-color: #4299e1; /* Azul vibrante para os botões */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #3182ce; /* Azul mais escuro no hover */
+}
+
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+button.btn-danger {
+    background-color: #e53e3e; /* Vermelho para o botão de deletar */
+    color: white;
+    width: auto;
+    margin-top: 10px;
+}
+
+button.btn-danger:hover {
+    background-color: #c53030; /* Vermelho mais escuro no hover */
+}
+
+div p {
+    color: #4a5568;
+    font-size: 14px;
+}
+
+div p[style="color: red;"] {
+    color: #e53e3e; /* Vermelho para mensagens de erro */
+}
