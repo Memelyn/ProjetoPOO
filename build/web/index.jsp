@@ -4,7 +4,7 @@
     <title>Gerenciar Conta</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="styleCadastro.css">
+    <link rel="stylesheet" href="css/styleCadastro.css">
 </head>
 <body>
     <%@include file="WEB-INF/jspf/header.jspf" %>
@@ -20,20 +20,20 @@
                 <h1>Verificador de Avarias</h1>
             </header>
 
-            <!-- Formulário para análise de imagem -->
+            <!-- FormulÃ¡rio para anÃ¡lise de imagem -->
             <form method="POST" action="APIGemini">
                 <div style="margin: 50px auto; width: 80%; max-width: 600px; text-align: center; background: lightblue; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
-                    <label for="img_end" class="form-label">Endereço da Imagem do Automóvel</label>
+                    <label for="img_end" class="form-label">EndereÃ§o da Imagem do AutomÃ³vel</label>
                     <input type="text" class="form-control mb-3" id="img_end" name="imagePath" required>
                     <br>
                     <input type="submit" value="Analisar Imagem" class="btn btn-primary"/>
                 </div>       
             </form>
 
-            <!-- Resultado da análise -->
+            <!-- Resultado da anÃ¡lise -->
             <div style="margin: 30px auto; width: 80%; max-width: 600px; text-align: center; padding: 20px;">
                 <% if (request.getAttribute("analysisResult") != null) { %>
-                <h2>Resultado da Análise:</h2>
+                <h2>Resultado da AnÃ¡lise:</h2>
                 <p><%= request.getAttribute("analysisResult") %></p>
                 <% } else if (request.getAttribute("error") != null) { %>
                 <p style="color: red;"><%= request.getAttribute("error") %></p>
@@ -47,7 +47,7 @@
             const app = Vue.createApp({
                 data() {
                     return {
-                        user: null // Dados do usuário logado
+                        user: null // Dados do usuÃ¡rio logado
                     };
                 },
                 methods: {
@@ -57,7 +57,7 @@
                             if (response.ok) {
                                 this.user = await response.json();
                             } else {
-                                console.warn('Usuário não logado');
+                                console.warn('UsuÃ¡rio nÃ£o logado');
                                 this.user = null;
                             }
                         } catch (err) {
@@ -66,7 +66,7 @@
                     }
                 },
                 async mounted() {
-                    await this.fetchUser(); // Busca as informações do usuário ao carregar a página
+                    await this.fetchUser(); // Busca as informaÃ§Ãµes do usuÃ¡rio ao carregar a pÃ¡gina
                 }
             });
             app.mount('#index_app');
