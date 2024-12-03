@@ -19,8 +19,8 @@ AutoVar é um site de verificação de avarias presentes em automóveis que util
 ---
 
 ## **Tecnologias Utilizadas**
-- ***Front-end***: [HTML5, CSS e VUE]
-- ***Back-end***: [JAVA e JS]
+- ***Front-end***: [HTML5, CSS, VUE e JS]
+- ***Back-end***: [JAVA]
 - ***Banco de dados***: [SQLIGHT]
 - ***Integração com API***: [Gemini API]
 
