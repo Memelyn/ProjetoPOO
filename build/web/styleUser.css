@@ -7,33 +7,35 @@ body {
     text-align: center;
 }
 
-header {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-header h1 {
+h1 {
     color: #1a202c; /* Cor destacada para o título */
     font-size: 2rem;
-    margin: 0;
+    margin: 20px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 form {
-    margin: 30px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
     background-color: #ffffff; /* Fundo branco para o formulário */
-    border: 1px solid #e2e8f0; /* Borda clara */
-    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #e2e8f0; /* Borda suave */
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
     font-size: 14px;
-    color: #4a5568; /* Texto cinza */
+    color: #4a5568; /* Cor para o texto do label */
     margin-bottom: 8px;
 }
 
@@ -41,60 +43,49 @@ input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #e2e8f0; /* Bordas suaves */
-    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
     background-color: #edf2f7; /* Fundo claro */
     color: #2d3748; /* Texto escuro */
     font-size: 14px;
 }
 
-input[type="submit"] {
-    background-color: #4299e1; /* Azul vibrante */
-    color: #ffffff; /* Texto branco */
+button {
+    background-color: #4299e1; /* Azul vibrante para os botões */
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
 }
 
-input[type="submit"]:hover {
+button:hover {
     background-color: #3182ce; /* Azul mais escuro no hover */
 }
 
-.form-text {
-    text-align: right;
-    font-size: 12px;
-    color: #718096; /* Texto cinza */
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #e2e8f0;
 }
 
-.form-text a {
-    color: #4299e1; /* Azul para o link */
-    text-decoration: none;
+button.btn-danger {
+    background-color: #e53e3e; /* Vermelho para o botão de deletar */
+    color: white;
+    width: auto;
+    margin-top: 10px;
 }
 
-.form-text a:hover {
-    text-decoration: underline;
-}
-
-div {
-    margin: 30px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-}
-
-div h2 {
-    color: #2d3748; /* Texto escuro */
-    font-size: 18px;
-    margin-bottom: 10px;
+button.btn-danger:hover {
+    background-color: #c53030; /* Vermelho mais escuro no hover */
 }
 
 div p {
+    color: #4a5568;
     font-size: 14px;
-    color: #4a5568; /* Texto neutro */
 }
 
 div p[style="color: red;"] {
