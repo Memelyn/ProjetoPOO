@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Login e Cadastro</title>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="styleLogin.css">
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
@@ -44,29 +44,26 @@
     <!-- Se houver usuário na sessão -->
     <div v-else>
         <!-- Menu para usuários logados -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.jsp">Verificador</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/historico">Histórico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="user.jsp">Usuário</a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link text-danger" href="#" @click.prevent="logout"/>Sair</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<nav class="custom-navbar mb-3">
+    <div class="custom-container">
+        <div class="custom-navbar-collapse collapse" id="custom-navbar-content">
+            <ul class="custom-navbar-nav">
+                <li class="custom-nav-item">
+                    <a class="custom-nav-link" href="index.jsp">Verificador</a>
+                </li>
+                <li class="custom-nav-item">
+                    <a class="custom-nav-link" href="/historico">Histórico</a>
+                </li>
+                <li class="custom-nav-item">
+                    <a class="custom-nav-link" href="user.jsp">Usuário</a>
+                </li>
+                <li class="custom-nav-item">
+                    <button class="custom-nav-link custom-logout-button" href="#" @click.prevent="logout">Sair</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
         
     </div>
 </div>
