@@ -4,9 +4,8 @@
 <html>
     <head>
         <title>Login e Cadastro</title>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <link rel="stylesheet" href="styleCadastro.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
        <div id="header_app" class="container mt-5">
@@ -23,8 +22,11 @@
                 <input type="password" id="password" v-model="password" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
+             <a class="nav-link" href="index.jsp">Usuário</a>
         </form>
-
+        <form action="cadastro.jsp" method="get">
+            <input type="submit" value="Criar conta">
+        </form>
     </div>
 
     <!-- Se houver usuário na sessão -->
@@ -41,7 +43,7 @@
                             <a class="nav-link" href="index.jsp">Verificador</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="history.jsp">Histórico</a>
+                            <a class="nav-link" href="/historico">Histórico</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="user.jsp">Usuário</a>
@@ -64,8 +66,10 @@
                 return {
                     user: null, // Receba o usuário da sessão via API ou inicialize como `null`
                     login: '',
-                    password: ''
-                    
+                    password: '',
+                    newLogin: '',
+                    newName: '',
+                    newPassword: ''
                 };
             },
             methods: {
@@ -84,6 +88,30 @@
                             alert(error.error || 'Erro ao fazer login');
                         } else {
                             location.reload(); // Recarrega a página após login bem-sucedido
+                        }
+                    } catch (err) {
+                        alert('Erro ao conectar ao servidor');
+                    }
+                },
+                async register() {
+                    try {
+                        const response = await fetch('/AutoVar/api/users', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                login: this.newLogin,
+                                name: this.newName,
+                                password: this.newPassword
+                            })
+                        });
+                        if (!response.ok) {
+                            const error = await response.json();
+                            alert(error.error || 'Erro ao cadastrar');
+                        } else {
+                            alert('Usuário cadastrado com sucesso!');
+                            this.newLogin = '';
+                            this.newName = '';
+                            this.newPassword = '';
                         }
                     } catch (err) {
                         alert('Erro ao conectar ao servidor');

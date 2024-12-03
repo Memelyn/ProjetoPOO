@@ -4,6 +4,7 @@
     <title>Gerenciar Conta</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="styleCadastro.css">
 </head>
 <body>
     <%@include file="WEB-INF/jspf/header.jspf" %>
@@ -24,7 +25,6 @@
                 <div style="margin: 50px auto; width: 80%; max-width: 600px; text-align: center; background: lightblue; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
                     <label for="img_end" class="form-label">Endereço da Imagem do Automóvel</label>
                     <input type="text" class="form-control mb-3" id="img_end" name="imagePath" required>
-                    
                     <br>
                     <input type="submit" value="Analisar Imagem" class="btn btn-primary"/>
                 </div>       
@@ -74,5 +74,3 @@
     </script>
 </body>
 </html>
-
-   
