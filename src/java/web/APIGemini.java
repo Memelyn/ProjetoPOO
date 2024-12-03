@@ -23,7 +23,7 @@ import java.net.http.HttpResponse;
 @WebServlet("/APIGemini")
 public class APIGemini extends HttpServlet {
 
-    private static final String API_KEY = "AIzaSyDnIj9oYTHbgy5XZATGls86SfwoqVlVedc"; // Substitua pela chave correta
+    private static final String API_KEY = "TODO"; // Substitua pela chave correta
     private static final String API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + API_KEY;
 
     // Função para redimensionar a imagem
@@ -110,7 +110,7 @@ public class APIGemini extends HttpServlet {
             String base64Image = encodeImage(imagePath);
 
             // Envia a requisição para a API
-            String analysisResult = sendRequest(base64Image, "Diga quais são as avarias no veículo.");
+            String analysisResult = sendRequest(base64Image, "Dê um relatório detalhado sobre as avarias dectadas no automóvel, categorize as avarias em diferentes níveis de severidade e dê sugestões de reparo. A resposta deve começar com 'Aqui está um relarótio das avarias', deve conter apenas as avarias. Não dê datas nem modelo do carro.");
 
             // Define o resultado da análise para a JSP
             req.setAttribute("analysisResult", analysisResult);
