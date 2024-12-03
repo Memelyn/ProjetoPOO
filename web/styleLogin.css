@@ -11,7 +11,7 @@
 }
 
 h1 {
-    color: #1a202c; /* Título mais destacado */
+    color: #4299e1; /* Título mais destacado */
 }
 
 form {
@@ -81,4 +81,103 @@ input[type="submit"]:hover {
 
 .forgot-password a:hover {
     text-decoration: underline;
+}
+
+/* Container principal da navbar */
+.custom-navbar {
+    background-color: #f8f9fc; /* Fundo claro */
+    border-bottom: 1px solid #e3e8f0; /* Linha de separação sutil */
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para o container interno */
+.custom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Links de navegação */
+.custom-nav-link {
+    color: #4a4a5e; /* Texto escuro neutro */
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Links ao passar o mouse */
+.custom-nav-link:hover {
+    color: #3b82f6; /* Azul vibrante */
+}
+
+/* Botão de logout com estilo diferenciado */
+.custom-logout-button {
+    color: #e63946; /* Vermelho suave */
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0;
+}
+
+.custom-logout-button:hover {
+    color: #c53030; /* Vermelho mais escuro no hover */
+}
+
+/* Botão de alternância para dispositivos móveis */
+.custom-navbar-toggler {
+    border: none;
+    background-color: #e3e8f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-navbar-toggler:hover {
+    background-color: #d1d5db; /* Tom mais escuro no hover */
+}
+
+/* Ícone do botão de alternância */
+.custom-toggler-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #4a4a5e; /* Ícone neutro */
+    display: block;
+    border-radius: 3px;
+}
+
+/* Itens de navegação (desktop e mobile) */
+.custom-navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização para itens da lista */
+.custom-nav-item {
+    margin-right: 15px;
+}
+
+/* Navbar expandida para dispositivos maiores */
+.custom-navbar-collapse {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .custom-navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .custom-nav-item {
+        margin-bottom: 10px;
+    }
 }
