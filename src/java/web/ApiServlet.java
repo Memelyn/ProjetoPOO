@@ -14,10 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import model.User;
-import model.VehicleStay;
+import model.VehicleAnalysis;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.time.*;
+import java.util.ArrayList;
 
 @WebServlet(name = "ApiServlet", urlPatterns = {"/api/*"})
 public class ApiServlet extends HttpServlet {
@@ -160,12 +161,21 @@ public class ApiServlet extends HttpServlet {
 }
     }
 
-   private void processDamage(JSONObject file, HttpServletRequest request, HttpServletResponse response) throws Exception{
-//        if(request.getSession().getAttribute("user")==null){
-//            response.sendError(401, "Unauthorized: no session");
-//            file.put("error", "Unauthorized: no session");
-//    }
-  }
+   private void processAnalysis(JSONObject file, HttpServletRequest request, HttpServletResponse response) throws Exception{
+//       if(request.getSession().getAttribute("user")==null){
+//        response.sendError(401, "Unauthorized: no session");
+//           file.put("error", "Unauthorized: no session");
+//  }
+
+     if (request.getMethod().toLowerCase().equals("get")) {
+    // Obtém o histórico do usuário logado
+         ArrayList<VehicleAnalysis> history = VehicleAnalysis.getHistory(request);
+
+    // Adiciona o histórico ao objeto JSON de resposta
+    file.put("list", new JSONArray(history));
+}
+
+   }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json;charset=UTF-8");
@@ -175,8 +185,8 @@ public class ApiServlet extends HttpServlet {
                 processSession(file, request, response);
             }else if(request.getRequestURI().endsWith("/api/users")){
                 processUsers(file, request, response);
-//            }else if(request.getRequestURI().endsWith("/api/damage")){
-//                processParking(file, request, response);
+    }else if(request.getRequestURI().endsWith("/api/analyser")){
+           processAnalysis(file, request, response);
             }else{
                 response.sendError(400, "Invalid URL");
                 file.put("error", "Invalid URL");

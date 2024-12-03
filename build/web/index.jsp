@@ -24,6 +24,7 @@
                 <div style="margin: 50px auto; width: 80%; max-width: 600px; text-align: center; background: lightblue; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
                     <label for="img_end" class="form-label">Endereço da Imagem do Automóvel</label>
                     <input type="text" class="form-control mb-3" id="img_end" name="imagePath" required>
+                    
                     <br>
                     <input type="submit" value="Analisar Imagem" class="btn btn-primary"/>
                 </div>       
@@ -73,3 +74,5 @@
     </script>
 </body>
 </html>
+
+   

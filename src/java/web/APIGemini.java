@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -19,6 +20,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import java.util.Date;
+import model.User;
 
 @WebServlet("/APIGemini")
 public class APIGemini extends HttpServlet {
@@ -94,31 +100,52 @@ public class APIGemini extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            // Obtém o caminho do arquivo enviado no formulário
-            String imagePath = req.getParameter("imagePath");  // Recebe o caminho da imagem do front-end
-
-            if (imagePath == null || imagePath.isEmpty()) {
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                req.setAttribute("error", "O caminho da imagem é obrigatório.");
-                req.getRequestDispatcher("index.jsp").forward(req, resp);
-                return;
-            }
-
-            // Codifica a imagem para Base64
-            String base64Image = encodeImage(imagePath);
-
-            // Envia a requisição para a API
-            String analysisResult = sendRequest(base64Image, "Diga quais são as avarias no veículo.");
-
-            // Define o resultado da análise para a JSP
-            req.setAttribute("analysisResult", analysisResult);
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    try {
+        // Verifica se o caminho da imagem foi enviado
+        String imagePath = req.getParameter("imagePath");
+        if (imagePath == null || imagePath.isEmpty()) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            req.setAttribute("error", "O caminho da imagem é obrigatório.");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
-
-        } catch (Exception e) {
-            req.setAttribute("error", "Erro ao processar a imagem: " + e.getMessage());
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            return;
         }
+
+        // Codifica a imagem em Base64
+        String base64Image = encodeImage(imagePath);
+
+        // Envia a requisição para a API
+        String analysisResult = sendRequest(base64Image, "Diga quais são as avarias no veículo.");
+
+        // Obtém o usuário logado
+        HttpSession session = req.getSession(false);
+        if (session == null || session.getAttribute("user") == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            req.setAttribute("error", "Usuário não autenticado.");
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            return;
+        }
+        User loggedUser = (User) session.getAttribute("user");
+        Long rowIdUser = loggedUser.getRowId();
+
+        // Persiste no banco de dados
+        String SQL = "INSERT INTO reportss (rowId_user, vehicle_image, vehicle_report, analysis_date) VALUES (?, ?, ?, ?)";
+        try (Connection con = AppListener.getConnection();
+             PreparedStatement s = con.prepareStatement(SQL)) {
+            s.setLong(1, rowIdUser);
+            s.setString(2, imagePath);
+            s.setString(3, analysisResult);
+            s.setTimestamp(4, new Timestamp(new Date().getTime()));
+            s.execute();
+        }
+
+        // Define o resultado para exibição
+        req.setAttribute("analysisResult", analysisResult);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
+
+    } catch (Exception e) {
+        req.setAttribute("error", "Erro ao processar a imagem: " + e.getMessage());
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
+}
 }

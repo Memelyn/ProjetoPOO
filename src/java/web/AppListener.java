@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.Date;
 import model.User;
-import model.VehicleStay;
+import model.VehicleAnalysis;
 
 @WebListener
 public class AppListener implements ServletContextListener {
@@ -36,7 +36,7 @@ public class AppListener implements ServletContextListener {
             
             initializeLog += "done; ";
             initializeLog += " Creating vehicleStay table if not exists...";
-            s.execute(VehicleStay.getCreateStatement());
+            s.execute(VehicleAnalysis.getCreateStatement());
              initializeLog += "done; ";
             s.close();
             c.close();
