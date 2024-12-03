@@ -13,128 +13,151 @@
         <maven.compiler.release>11</maven.compiler.release>
     </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version> <!-- ou outra versão compatível -->
-            <scope>provided</scope>
-        </dependency>
+   <dependencies>
+    <!-- API para Servlets -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+        <!-- Fornece as classes necessárias para trabalhar com Servlets. 
+        O escopo "provided" indica que o contêiner de aplicação (como Tomcat) já fornece esta dependência. -->
+    </dependency>
 
-        
-        <!-- Jakarta EE API -->
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>${jakartaee}</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- Google API Client Library -->
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>1.34.0</version>
-        </dependency>
+    <!-- API Jakarta EE -->
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>${jakartaee}</version>
+        <scope>provided</scope>
+        <!-- Contém todas as APIs Jakarta EE necessárias para o desenvolvimento de aplicações corporativas. -->
+    </dependency>
 
-        <!-- Gson for JSON processing -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.8</version>
-        </dependency>
+    <!-- Cliente de API Google -->
+    <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>1.34.0</version>
+        <!-- Biblioteca da Google para consumir APIs REST. -->
+    </dependency>
 
-        <!-- SLF4J for logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.9</version>
-        </dependency>
+    <!-- Gson para manipulação de JSON -->
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.8.8</version>
+        <!-- Biblioteca do Google para serializar e desserializar objetos em JSON. -->
+    </dependency>
 
-        <!-- JSON Library -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20210307</version>
-            <type>jar</type>
-        </dependency>
+    <!-- SLF4J para logging -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.9</version>
+        <!-- Interface de abstração para logging. -->
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>2.0.9</version>
+        <!-- Implementação simples do SLF4J. -->
+    </dependency>
 
-        <!-- JUnit for testing -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <!-- Jackson para manipulação de JSON -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
-        </dependency>
+    <!-- Biblioteca JSON -->
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20210307</version>
+        <type>jar</type>
+        <!-- Biblioteca para manipulação de JSON, útil para parsing e geração. -->
+    </dependency>
 
-        <!-- Apache HTTPClient para chamadas REST -->
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <version>5.2.1</version>
-        </dependency>
+    <!-- JUnit para testes -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.0</version>
+        <scope>test</scope>
+        <!-- Framework para testes unitários e de integração. -->
+    </dependency>
 
-        <!-- Servlets API -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+    <!-- Jackson para JSON -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.15.2</version>
+        <!-- Biblioteca para manipulação de JSON, alternativa ao Gson. -->
+    </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.1.0</version> <!-- Verifique a versão mais recente -->
-            <scope>provided</scope>
-        </dependency>
+    <!-- Apache HttpClient para chamadas REST -->
+    <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>5.2.1</version>
+        <!-- Biblioteca avançada para fazer requisições HTTP. -->
+    </dependency>
 
-        <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <version>4.0.1</version> <!-- Verifique a versão mais recente -->
-            <scope>provided</scope>
-        </dependency>
+    <!-- API para Servlets Jakarta -->
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
+        <scope>provided</scope>
+        <!-- Versão moderna da API de Servlets, utilizada para interações HTTP/HTTPS. -->
+    </dependency>
 
-        <dependency>
-            <groupId>jakarta.json</groupId>
-            <artifactId>jakarta.json-api</artifactId>
-            <version>2.1.0</version> <!-- Verifique a versão mais recente -->
-            <scope>provided</scope>
-        </dependency>
-             
-        <dependency>
-            <groupId>br.com.objectos</groupId>
-            <artifactId>core-object</artifactId>
-            <version>0.7.0-jdk17</version>
-            <type>jar</type>
-        </dependency>
+    <!-- Biblioteca OkHttp -->
+    <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+        <version>4.11.0</version>
+        <!-- Cliente HTTP eficiente e fácil de usar. -->
+    </dependency>
+    
+    <!-- API Jakarta Web Services (JAX-RS) -->
+    <dependency>
+        <groupId>jakarta.ws.rs</groupId>
+        <artifactId>jakarta.ws.rs-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+        <!-- API para criar e consumir web services RESTful. -->
+    </dependency>
+
+    <!-- API Jakarta CDI (Contextos e Injeção de Dependências) -->
+    <dependency>
+        <groupId>jakarta.enterprise</groupId>
+        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+        <!-- API para injeção de dependência e gerenciamento de escopo. -->
+    </dependency>
+
+    <!-- API Jakarta JSON -->
+    <dependency>
+        <groupId>jakarta.json</groupId>
+        <artifactId>jakarta.json-api</artifactId>
+        <version>2.1.0</version>
+        <scope>provided</scope>
+        <!-- API para manipulação de dados JSON. -->
+    </dependency>
+
+    <!-- Biblioteca Objectos -->
+    <dependency>
+        <groupId>br.com.objectos</groupId>
+        <artifactId>core-object</artifactId>
+        <version>0.7.0-jdk17</version>
+        <type>jar</type>
+        <!-- Biblioteca personalizada, utilizada para abstrações no projeto. -->
+    </dependency>
                  
-        <dependency>
-            <groupId>org.apache.httpcomponents.core5</groupId>
-            <artifactId>httpcore5</artifactId>
-            <version>5.2.1</version> <!-- Verifique se há versões mais recentes -->
-        </dependency>
-        
-     </dependencies>
+    <!-- Apache HttpCore -->
+    <dependency>
+        <groupId>org.apache.httpcomponents.core5</groupId>
+        <artifactId>httpcore5</artifactId>
+        <version>5.2.1</version>
+        <!-- Núcleo do cliente HTTP para requisições síncronas e assíncronas. -->
+    </dependency>
+</dependencies>
     
     
     <build>
