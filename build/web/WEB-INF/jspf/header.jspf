@@ -25,21 +25,6 @@
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
 
-        <form @submit.prevent="register">
-            <div class="form-group">
-                <label for="newLogin">Login</label>
-                <input type="text" id="newLogin" v-model="newLogin" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="newName">Nome</label>
-                <input type="text" id="newName" v-model="newName" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="newPassword">Senha</label>
-                <input type="password" id="newPassword" v-model="newPassword" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-        </form>
     </div>
 
     <!-- Se houver usuário na sessão -->
@@ -79,10 +64,8 @@
                 return {
                     user: null, // Receba o usuário da sessão via API ou inicialize como `null`
                     login: '',
-                    password: '',
-                    newLogin: '',
-                    newName: '',
-                    newPassword: ''
+                    password: ''
+                    
                 };
             },
             methods: {
@@ -101,30 +84,6 @@
                             alert(error.error || 'Erro ao fazer login');
                         } else {
                             location.reload(); // Recarrega a página após login bem-sucedido
-                        }
-                    } catch (err) {
-                        alert('Erro ao conectar ao servidor');
-                    }
-                },
-                async register() {
-                    try {
-                        const response = await fetch('/AutoVar/api/users', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                login: this.newLogin,
-                                name: this.newName,
-                                password: this.newPassword
-                            })
-                        });
-                        if (!response.ok) {
-                            const error = await response.json();
-                            alert(error.error || 'Erro ao cadastrar');
-                        } else {
-                            alert('Usuário cadastrado com sucesso!');
-                            this.newLogin = '';
-                            this.newName = '';
-                            this.newPassword = '';
                         }
                     } catch (err) {
                         alert('Erro ao conectar ao servidor');

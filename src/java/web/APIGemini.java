@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,7 +28,7 @@ import model.User;
 @WebServlet("/APIGemini")
 public class APIGemini extends HttpServlet {
 
-    private static final String API_KEY = "AIzaSyDnIj9oYTHbgy5XZATGls86SfwoqVlVedc"; // Substitua pela chave correta
+    private static final String API_KEY = "TODO"; // Substitua pela chave correta
     private static final String API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + API_KEY;
 
     // Função para redimensionar a imagem
@@ -100,52 +99,52 @@ public class APIGemini extends HttpServlet {
     }
 
     @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    try {
-        // Verifica se o caminho da imagem foi enviado
-        String imagePath = req.getParameter("imagePath");
-        if (imagePath == null || imagePath.isEmpty()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            req.setAttribute("error", "O caminho da imagem é obrigatório.");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            // Verifica se o caminho da imagem foi enviado
+            String imagePath = req.getParameter("imagePath");
+            if (imagePath == null || imagePath.isEmpty()) {
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                req.setAttribute("error", "O caminho da imagem é obrigatório.");
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
+                return;
+            }
+
+            // Codifica a imagem em Base64
+            String base64Image = encodeImage(imagePath);
+
+            // Envia a requisição para a API
+            String analysisResult = sendRequest(base64Image, "Dê um relatório detalhado sobre as avarias detectadas no automóvel, categorize as avarias em diferentes níveis de severidade e dê sugestões de reparo. A resposta deve começar com 'Aqui está um relatório das avarias', deve conter apenas as avarias. Não dê datas nem modelo do carro.");
+
+            // Obtém o usuário logado
+            HttpSession session = req.getSession(false);
+            if (session == null || session.getAttribute("user") == null) {
+                resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                req.setAttribute("error", "Usuário não autenticado.");
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
+                return;
+            }
+            User loggedUser = (User) session.getAttribute("user");
+            Long rowIdUser = loggedUser.getRowId();
+
+            // Persiste no banco de dados
+            String SQL = "INSERT INTO reportss (rowId_user, vehicle_image, vehicle_report, analysis_date) VALUES (?, ?, ?, ?)";
+            try (Connection con = AppListener.getConnection();
+                 PreparedStatement s = con.prepareStatement(SQL)) {
+                s.setLong(1, rowIdUser);
+                s.setString(2, imagePath);
+                s.setString(3, analysisResult);
+                s.setTimestamp(4, new Timestamp(new Date().getTime()));
+                s.execute();
+            }
+
+            // Define o resultado para exibição
+            req.setAttribute("analysisResult", analysisResult);
             req.getRequestDispatcher("index.jsp").forward(req, resp);
-            return;
-        }
 
-        // Codifica a imagem em Base64
-        String base64Image = encodeImage(imagePath);
-
-        // Envia a requisição para a API
-        String analysisResult = sendRequest(base64Image, "Diga quais são as avarias no veículo.");
-
-        // Obtém o usuário logado
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            req.setAttribute("error", "Usuário não autenticado.");
+        } catch (Exception e) {
+            req.setAttribute("error", "Erro ao processar a imagem: " + e.getMessage());
             req.getRequestDispatcher("index.jsp").forward(req, resp);
-            return;
         }
-        User loggedUser = (User) session.getAttribute("user");
-        Long rowIdUser = loggedUser.getRowId();
-
-        // Persiste no banco de dados
-        String SQL = "INSERT INTO reportss (rowId_user, vehicle_image, vehicle_report, analysis_date) VALUES (?, ?, ?, ?)";
-        try (Connection con = AppListener.getConnection();
-             PreparedStatement s = con.prepareStatement(SQL)) {
-            s.setLong(1, rowIdUser);
-            s.setString(2, imagePath);
-            s.setString(3, analysisResult);
-            s.setTimestamp(4, new Timestamp(new Date().getTime()));
-            s.execute();
-        }
-
-        // Define o resultado para exibição
-        req.setAttribute("analysisResult", analysisResult);
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-
-    } catch (Exception e) {
-        req.setAttribute("error", "Erro ao processar a imagem: " + e.getMessage());
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
-}
 }
