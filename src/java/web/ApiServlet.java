@@ -5,6 +5,7 @@
 package web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.time.*;
 
 @WebServlet(name = "ApiServlet", urlPatterns = {"/api/*"})
 public class ApiServlet extends HttpServlet {
@@ -105,7 +107,7 @@ public class ApiServlet extends HttpServlet {
             User loggedUser = (User) session.getAttribute("user");
 
             // Recupera o ID do usuário logado
-            Long rowId = loggedUser.getRowId(); // Supondo que o objeto User tem o método getRowId
+            Long rowId = loggedUser.getRowId(); // Supondo que o objeto `User` tem o método `getRowId`
             if (rowId == null) {
                 response.sendError(401, "Usuário não autenticado.");
                 return;
