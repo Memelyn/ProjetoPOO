@@ -135,18 +135,6 @@ public class ApiServlet extends HttpServlet {
         }
     }
 
-    // Processa requisições relacionadas às análises de veículos
-    private void processAnalysis(JSONObject file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        if (request.getMethod().toLowerCase().equals("get")) {
-            // Retorna o histórico de análises do usuário logado
-            ArrayList<VehicleAnalysis> history = VehicleAnalysis.getHistory(request);
-            file.put("list", new JSONArray(history));
-        } else {
-            // Método não permitido
-            response.sendError(405, "Method not allowed");
-            file.put("error", "Method not allowed");
-        }
-    }
 
     // Processa a requisição principal
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -160,9 +148,7 @@ public class ApiServlet extends HttpServlet {
             } else if (uri.endsWith("/api/users")) {
                 // Processa requisições relacionadas aos usuários
                 processUsers(file, request, response);
-            } else if (uri.endsWith("/api/analyser")) {
-                // Processa requisições relacionadas às análises de veículos
-                processAnalysis(file, request, response);
+            
             } else {
                 // URL inválida
                 response.sendError(400, "Invalid URL");
