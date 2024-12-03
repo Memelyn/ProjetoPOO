@@ -5,6 +5,16 @@
 
 ---
 
+## Índice
+* [Descrição do Projeto](#descrição)
+* [Funcionalidades](#funcionalidades)
+* [Tecnologias Utilizadas](#tecnologias-utilizadas)
+* [Como Executar o Projeto](#instalação-e-uso)
+* [Licença](#licença)
+* [Autores do Projeto](#autores)
+  
+---
+
 ## **Descrição**
 AutoVar é um site de verificação de avarias presentes em automóveis que utiliza IA para maior eficiência nas análises, feito para facilitar a identificação de quaisquer tipos de batidas, arranhões e amassados num veículo com apenas um botão.
 
@@ -13,13 +23,13 @@ AutoVar é um site de verificação de avarias presentes em automóveis que util
 ## **Funcionalidades**
 - ***Cadastro e Login Seguros***: Cadastro de novos usuários e autenticação.
 - ***Relatório e Feedback***: Geração de relatório detalhado sobre as avarias dectadas na imagem de um veículo e sugestões de reparo.
-- ***Histórico de Relatórios***: Histórico de todos os relatórios já solicitados pelo usuário.
 - ***Segurança de Dados***: Os dados do usuário e imagens são protegidos por criptografia durante o envio, armazenamento e transmissão.
-
+- ***[Funcionalidade Futura] Histórico de Relatórios***: Histórico de todos os relatórios já solicitados pelo usuário.
+  
 ---
 
 ## **Tecnologias Utilizadas**
-- ***Front-end***: [HTML5, CSS, VUE e JS]
+- ***Front-end***: [HTML5, CSS, VUE, JS e BOOTSTRAP]
 - ***Back-end***: [JAVA]
 - ***Banco de dados***: [SQLIGHT]
 - ***Integração com API***: [Gemini API]
@@ -42,6 +52,8 @@ AutoVar é um site de verificação de avarias presentes em automóveis que util
 - Baixe o projeto inteiro em sua máquina clique em **<>Code**, **Download ZIP** e descompacte o arquivo. Dentro do Netbeans importe o projeto descompactado clicando em **File**, **Open File** e selecionando a pasta do projeto. Clique no projeto com o botão direito 
   do mouse, vá em **Properties**, **run**, adicione e baixe o servidor **Glassfish 8.0.0**, logo após aperte **shift+F11** para limpar, construir e baixar as dependências necessárias. Após verificar que as dependências foram baixadas com sucesso aperte **F6** para 
   rodar o projeto.
+
+---
 
 ## **Licença**
 Este projeto está licenciado sob a **Licença MIT**. Consulte o arquivo ***[LICENSE](LICENSE)*** para mais detalhes.
